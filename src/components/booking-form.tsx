@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 
+const ESSERE_WHATSAPP_NUMBER = "5491126545255";
 const preferences = ["Mañana", "Mediodía", "Tarde"];
 
 export default function BookingForm() {
@@ -31,9 +32,18 @@ export default function BookingForm() {
       return;
     }
 
-    setStatus(
-      `Gracias, ${fullName}. Registramos tu preferencia para ${preference.toLowerCase()} y te contactaremos por WhatsApp.`
-    );
+    const message = [
+      "Hola Essere Estética, quiero solicitar un turno.",
+      "",
+      `Nombre y apellido: ${fullName}`,
+      `Mail: ${email}`,
+      `WhatsApp: ${whatsapp}`,
+      `Horario preferido: ${preference}`
+    ].join("\n");
+    const whatsappUrl = `https://wa.me/${ESSERE_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    setStatus("Te abrimos WhatsApp con la solicitud lista para enviar.");
     form.reset();
   }
 
@@ -65,7 +75,7 @@ export default function BookingForm() {
       </fieldset>
 
       <button className="button button-primary w-full" type="submit">
-        Enviar solicitud
+        Enviar por WhatsApp
       </button>
 
       <p className={`form-status ${isError ? "is-error" : ""}`} role="status" aria-live="polite">
