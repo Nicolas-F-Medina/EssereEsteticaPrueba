@@ -76,9 +76,9 @@ const certifications = [
 
 const navItems = [
   { href: "#servicios", label: "Servicios" },
+  { href: "#experiencia", label: "Experiencia" },
   { href: "#sobre-mi", label: "Sobre mí" },
   { href: "#testimonios", label: "Testimonios" },
-  { href: "#experiencia", label: "Experiencia" },
   { href: "#turnos", label: "Turnos" },
   { href: "#contacto", label: "Contacto" }
 ];
