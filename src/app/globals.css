@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,7 +15,8 @@
   --ink: #31232a;
   --muted: #7a6470;
   --line: rgba(184, 63, 105, 0.16);
-  --shadow: 0 24px 70px rgba(184, 63, 105, 0.18);
+  --surface: rgba(255, 255, 255, 0.9);
+  --shadow: 0 24px 70px rgba(184, 63, 105, 0.16);
 }
 
 * {
@@ -28,8 +31,11 @@ html {
 body {
   margin: 0;
   color: var(--ink);
-  background: var(--paper);
-  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(243, 168, 189, 0.28), transparent 28rem),
+    radial-gradient(circle at 85% 34%, rgba(255, 224, 233, 0.8), transparent 26rem),
+    var(--paper);
+  font-family: "Manrope", "Segoe UI", Arial, Helvetica, sans-serif;
   line-height: 1.5;
 }
 
@@ -55,7 +61,7 @@ input {
   min-height: 76px;
   padding: 16px clamp(20px, 4vw, 56px);
   color: #fff;
-  background: linear-gradient(180deg, rgba(49, 35, 42, 0.72), rgba(49, 35, 42, 0));
+  background: linear-gradient(180deg, rgba(49, 35, 42, 0.78), rgba(49, 35, 42, 0));
 }
 
 .brand {
@@ -85,6 +91,7 @@ input {
 
 .brand strong {
   font-size: 1rem;
+  font-weight: 800;
 }
 
 .brand small {
@@ -163,7 +170,7 @@ p {
 h1,
 h2 {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
   line-height: 1.02;
 }
 
@@ -179,7 +186,8 @@ h2 {
 
 h3 {
   margin: 0;
-  font-size: 1.18rem;
+  font-size: 1.22rem;
+  line-height: 1.22;
 }
 
 .hero-copy {
@@ -215,14 +223,15 @@ h3 {
 
 .button-primary {
   color: #fff;
-  background: var(--rose);
+  background: linear-gradient(135deg, var(--berry), var(--rose));
   box-shadow: 0 14px 28px rgba(184, 63, 105, 0.28);
 }
 
 .button-secondary {
   color: #fff;
   border-color: rgba(255, 255, 255, 0.56);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
 }
 
 .section-inner {
@@ -231,7 +240,9 @@ h3 {
 }
 
 .section-band {
-  background: var(--petal);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.42), transparent),
+    var(--petal);
 }
 
 .intro {
@@ -276,16 +287,24 @@ h3 {
 .service-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
+  gap: 18px;
 }
 
 .service-card {
   min-height: 260px;
-  padding: 24px;
+  padding: 26px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
   box-shadow: 0 16px 42px rgba(184, 63, 105, 0.08);
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.service-card:hover,
+.testimonial-card:hover {
+  border-color: rgba(184, 63, 105, 0.28);
+  box-shadow: 0 22px 54px rgba(184, 63, 105, 0.12);
+  transform: translateY(-2px);
 }
 
 .service-number {
@@ -296,8 +315,9 @@ h3 {
 }
 
 .service-card p {
-  margin: 14px 0 0;
+  margin: 18px 0 0;
   color: var(--muted);
+  line-height: 1.65;
 }
 
 .experience {
@@ -317,26 +337,28 @@ h3 {
 
 .metric-list {
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 
 .metric-list div {
   display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 16px;
-  align-items: center;
-  padding: 20px;
+  grid-template-columns: 130px 1fr;
+  gap: 28px;
+  align-items: start;
+  padding: 22px;
   border-left: 4px solid var(--rose-soft);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
 }
 
 .metric-list strong {
   color: var(--rose);
+  line-height: 1.35;
 }
 
 .metric-list span {
   color: var(--muted);
+  line-height: 1.65;
 }
 
 .about-card {
@@ -347,7 +369,7 @@ h3 {
   padding: clamp(24px, 4vw, 42px);
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
   box-shadow: 0 16px 42px rgba(184, 63, 105, 0.08);
 }
 
@@ -372,11 +394,16 @@ h3 {
 
 .about-copy p {
   color: var(--muted);
+  line-height: 1.72;
+}
+
+.about-copy p + p {
+  margin-top: 14px;
 }
 
 .certification-list {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .certification-list span {
@@ -385,32 +412,35 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 8px;
   color: var(--ink);
-  background: var(--paper);
+  background: rgba(255, 248, 251, 0.82);
   font-size: 0.94rem;
   font-weight: 700;
+  line-height: 1.45;
 }
 
 .testimonial-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: 18px;
 }
 
 .testimonial-card {
   display: grid;
   align-content: space-between;
   min-height: 250px;
-  padding: 24px;
+  padding: 28px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
   box-shadow: 0 16px 42px rgba(184, 63, 105, 0.08);
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
 
 .testimonial-card p {
   margin: 0;
   color: var(--ink);
   font-size: 1.02rem;
+  line-height: 1.72;
 }
 
 .testimonial-card strong,
@@ -421,11 +451,14 @@ h3 {
 .testimonial-card strong {
   margin-top: 28px;
   color: var(--rose);
+  line-height: 1.4;
 }
 
 .testimonial-card span {
+  margin-top: 5px;
   color: var(--muted);
   font-size: 0.92rem;
+  line-height: 1.5;
 }
 
 .booking {
@@ -441,7 +474,7 @@ h3 {
   padding: clamp(22px, 4vw, 34px);
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
   box-shadow: var(--shadow);
 }
 
@@ -532,15 +565,17 @@ input:focus {
 }
 
 .site-footer {
-  padding: 44px 0;
+  padding: 54px 0;
   color: #fff;
-  background: var(--ink);
+  background:
+    radial-gradient(circle at 18% 0%, rgba(184, 63, 105, 0.32), transparent 18rem),
+    var(--ink);
 }
 
 .footer-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) repeat(2, minmax(180px, 0.45fr));
-  gap: 28px;
+  gap: 42px;
 }
 
 .site-footer p,
@@ -548,15 +583,18 @@ input:focus {
 .site-footer span {
   display: block;
   color: rgba(255, 255, 255, 0.72);
+  line-height: 1.72;
 }
 
 .site-footer strong {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
+  color: #fff;
+  line-height: 1.35;
 }
 
 .footer-brand {
-  margin-bottom: 14px;
+  margin-bottom: 18px;
 }
 
 .floating-whatsapp {
@@ -571,7 +609,7 @@ input:focus {
   padding: 0 18px;
   border-radius: 999px;
   color: #fff;
-  background: #25d366;
+  background: linear-gradient(135deg, #128c4a, #25d366);
   box-shadow: 0 18px 36px rgba(37, 211, 102, 0.28);
   font-size: 0.95rem;
   font-weight: 800;
