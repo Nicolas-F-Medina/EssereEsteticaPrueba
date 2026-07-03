@@ -1,6 +1,9 @@
 import Image from "next/image";
 import BookingForm from "@/components/booking-form";
 
+const whatsappUrl =
+  "https://wa.me/5491126545255?text=Hola%20Essere%20Est%C3%A9tica%2C%20quiero%20hacer%20una%20consulta.";
+
 const services = [
   {
     number: "01",
@@ -43,8 +46,38 @@ const highlights = [
   }
 ];
 
+const testimonials = [
+  {
+    name: "Camila R.",
+    treatment: "Depilación definitiva",
+    quote:
+      "Me sentí cómoda desde la primera consulta. Me explicaron el proceso con claridad y pude organizar las sesiones según mis horarios."
+  },
+  {
+    name: "Florencia M.",
+    treatment: "Estética corporal",
+    quote:
+      "El seguimiento fue muy cercano. Me gustó que no fuera un tratamiento suelto, sino un plan pensado para mi rutina."
+  },
+  {
+    name: "Julieta S.",
+    treatment: "Electrodos",
+    quote:
+      "El espacio es tranquilo, prolijo y la atención se siente personalizada. Eso para mí hizo toda la diferencia."
+  }
+];
+
+const certifications = [
+  "Formación en estética corporal integral",
+  "Capacitación en aparatología estética y electroestimulación",
+  "Especialización en protocolos de depilación definitiva",
+  "Actualización en atención, higiene y seguridad del paciente"
+];
+
 const navItems = [
   { href: "#servicios", label: "Servicios" },
+  { href: "#sobre-mi", label: "Sobre mí" },
+  { href: "#testimonios", label: "Testimonios" },
   { href: "#experiencia", label: "Experiencia" },
   { href: "#turnos", label: "Turnos" },
   { href: "#contacto", label: "Contacto" }
@@ -157,6 +190,59 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="about section-inner" id="sobre-mi" aria-labelledby="about-title">
+          <div className="about-card">
+            <div className="about-portrait" aria-hidden="true">
+              <span>E</span>
+            </div>
+            <div className="about-copy">
+              <p className="eyebrow">Sobre mí</p>
+              <h2 id="about-title">Acompañamiento estético con mirada integral</h2>
+              <p>
+                Soy la profesional a cargo de Essere Estética. Mi trabajo combina técnica, escucha y seguimiento
+                personalizado para que cada persona pueda iniciar un tratamiento con información clara, expectativas
+                realistas y una experiencia cuidada.
+              </p>
+              <p>
+                Esta sección está cargada con información de prueba para validar el diseño. Más adelante podemos
+                reemplazarla por biografía, matrícula, títulos reales, fotos y certificaciones verificadas.
+              </p>
+            </div>
+            <div className="certification-list" aria-label="Títulos y certificaciones de ejemplo">
+              {certifications.map((certification) => (
+                <span key={certification}>{certification}</span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="testimonials section-band" id="testimonios" aria-labelledby="testimonials-title">
+          <div className="section-inner">
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">Testimonios</p>
+                <h2 id="testimonials-title">Experiencias de prueba para presentar el servicio</h2>
+              </div>
+              <p>
+                Estos comentarios son textos de maqueta para visualizar la sección. Luego los reemplazamos por
+                testimonios reales de clientes.
+              </p>
+            </div>
+
+            <div className="testimonial-grid">
+              {testimonials.map((testimonial) => (
+                <article className="testimonial-card" key={testimonial.name}>
+                  <p>“{testimonial.quote}”</p>
+                  <div>
+                    <strong>{testimonial.name}</strong>
+                    <span>{testimonial.treatment}</span>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="booking section-inner" id="turnos" aria-labelledby="booking-title">
           <div className="booking-copy">
             <p className="eyebrow">Solicitud de turnos</p>
@@ -195,6 +281,16 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+
+      <a
+        className="floating-whatsapp"
+        href={whatsappUrl}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Consultar por WhatsApp"
+      >
+        <span>WhatsApp</span>
+      </a>
     </>
   );
 }
